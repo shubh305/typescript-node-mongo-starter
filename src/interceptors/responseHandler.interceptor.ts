@@ -1,0 +1,24 @@
+import { Interceptor, InterceptorInterface, Action } from "routing-controllers";
+import { msg } from "../configs/messages";
+
+@Interceptor()
+export class ResponseHandlerInterceptor implements InterceptorInterface {
+  intercept(action: Action, content: object) {
+    transformObjectId(content);
+    return {
+      result: content,
+      messages: msg.success
+    };
+  }
+}
+
+const transformObjectId = (data: any) => {
+  if (Array.isArray(data)) {
+    for (let val of data) {
+      val._id = val._id.toString();
+    }
+  }
+  else {
+    data._id = data._id.toString();
+  }
+}

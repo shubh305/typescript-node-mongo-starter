@@ -10,7 +10,9 @@ void new class Database {
     try {
       this.database = await mongoose.connect(process.env.MONGODB_URI, JSON.parse(process.env.DB_OPTIONS));
       console.log("Database connection successful", process.env.MONGODB_URI);
-      mongoose.set('debug', true);
+      if (process.env.NODE_ENV === "development") {
+        mongoose.set('debug', true);
+      }
     } catch (err) {
       console.error(err);
     }

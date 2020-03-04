@@ -1,15 +1,28 @@
+import { Body, Get, JsonController, Param, Post } from "routing-controllers";
+import { UserBusiness } from "./user.business";
+import { IUserDocument } from "./user.interfaces";
 
-import { login, signup, getUser } from "./user.business";
-import { IUserRequest } from "../../interfaces/interfaces";
+@JsonController('/users')
+export class UserController extends UserBusiness {
 
-export const userLogin = async (req: IUserRequest) => {
-  return await login(req);
-};
+  @Post("/login")
+  public async userLogin(@Body() body: IUserDocument): Promise<any> {
+    return await this.login(body);
+  }
 
-export const userSignup = async (req: IUserRequest) => {
-  return await signup(req);
-};
+  @Post("/signup")
+  public async userSignup(@Body() body: IUserDocument): Promise<any> {
+    return await this.signup(body);
+  };
 
-export const userGet = async (req: IUserRequest) => {
-  return await signup(req);
-};
+  @Get("/:id")
+  public async userGetOne(@Param('id') id: string): Promise<any> {
+    return await this.getUser(id);
+  };
+
+  @Get("/")
+  public async userGetAll(): Promise<any> {
+    console.log(this)
+    return await this.getAllUsers();
+  };
+}

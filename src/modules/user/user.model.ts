@@ -1,6 +1,6 @@
-import { Document, Schema, Model, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import jwt from "jsonwebtoken";
-import { IUserModel, IUserDocument } from "./user.interfaces"
+import { IUserModel, IUserDocument } from "./user.interfaces";
 
 
 const userSchema = new Schema({
@@ -25,10 +25,9 @@ userSchema.statics.findByToken = async function (token: string) {
   }
 };
 
-userSchema.methods.generateAuthToken = async function () {
-  let token;
+userSchema.methods.generateAuthToken = function () {
   let jwtObj = { _id: this._id.toHexString() };
-  token = jwt.sign(jwtObj, process.env.JWT_SECRET).toString();
+  let token = jwt.sign(jwtObj, process.env.JWT_SECRET).toString();
   return token;
 };
 
