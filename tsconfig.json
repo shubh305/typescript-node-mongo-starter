@@ -9,6 +9,10 @@
     "watch": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
+    "lib": [
+      "es2016",
+      "esnext.asynciterable"
+    ],
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
