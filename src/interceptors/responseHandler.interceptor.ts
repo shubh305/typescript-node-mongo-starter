@@ -7,7 +7,7 @@ export class ResponseHandlerInterceptor implements InterceptorInterface {
     transformObjectId(content);
     return {
       result: content,
-      messages: msg.success
+      message: msg.success
     };
   }
 }

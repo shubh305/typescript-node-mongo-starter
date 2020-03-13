@@ -1,7 +1,7 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType } from "type-graphql";
 
 @ObjectType({
-  description: 'User object.',
+  description: "User object",
 })
 export class User {
 
@@ -9,12 +9,12 @@ export class User {
   public _id: string;
 
   @Field({
-    description: 'The name of the user.',
+    description: "The name of the user.",
   })
   public name: string;
 
   @Field({
-    description: 'The email of the user.',
+    description: "The email of the user.",
   })
   public email: string;
 
