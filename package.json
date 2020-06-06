@@ -11,7 +11,7 @@
     "debug": "nodemon --inspect src/server.ts"
   },
   "dependencies": {
-    "apollo-server-express": "^2.11.0",
+    "apollo-server-express": "^2.14.2",
     "class-transformer": "0.2.3",
     "class-validator": "0.11.0",
     "cors": "^2.8.5",
